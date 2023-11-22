@@ -54,6 +54,13 @@ $hotels = [
 </head>
 
 <body>
+    <form class="p-3" action="index.php" method="GET">
+        <select class="form-select" name="filter">
+            <option selected value="0">Nessun Filtro</option>
+            <option value="1">Parcheggi</option>
+        </select>
+        <input type="submit" value="Filtra" name="submit">
+    </form>
     <table class="table">
         <tr>
             <?php
@@ -64,12 +71,17 @@ $hotels = [
         </tr>
 
         <?php
+        $parking = $_GET['filter'];
+
         foreach ($hotels as $hotel) {
-            echo '<tr>';
-            foreach ($hotel as $key => $value) {
-                echo "<td> $value </td>";
+            if ($parking == '0' || ($parking == '1' && $hotel['parking'])) {
+                echo '<tr>';
+                foreach ($hotel as $key => $value) {
+                    echo "<td> $value </td>";
+                }
+                echo '</tr>';
             }
-            echo '</tr>';
+
         }
         ?>
 
