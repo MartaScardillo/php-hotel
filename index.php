@@ -41,3 +41,29 @@ $hotels = [
 ];
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>php hotel</title>
+</head>
+
+<body>
+    <?php
+    $resultString = '';
+    foreach ($hotels as $hotel) {
+        $resultString .= '<p>';
+        foreach ($hotel as $key => $value) {
+            $resultString .= " $key: $value";
+        }
+        $resultString .= '</p>';
+    }
+
+    echo $resultString;
+    ?>
+</body>
+
+</html>
